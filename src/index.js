@@ -13,7 +13,7 @@ const gallery = document.querySelector('.gallery');
 
 let pageNumber = 1;
 let numberOfPages = 1;
-const perPage = 40;
+// const perPage = 40;
 
 searchButton.addEventListener('submit', async event => {
     event.preventDefault();
@@ -27,7 +27,7 @@ searchButton.addEventListener('submit', async event => {
     }
   });
 
-async function getImages(searchedPhrase, pageNumber, perPage) {
+async function getImages(searchedPhrase, pageNumber) {
     try {
 
         const param = new URLSearchParams({
@@ -54,7 +54,15 @@ async function getImages(searchedPhrase, pageNumber, perPage) {
         Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
 
         scrollPage.scrollPage();
-       
+
+        if (response.data.totalHits === gallery.childElementCount) {
+          Notify.info(
+            "We're sorry, but you've reached the end of search results."
+          );
+          console.log(response.data.totalHits);
+        }
+
+        
     } catch (error) {
         Notify.failure(
             'Sorry, there are no images matching your search query. Please try again.'
