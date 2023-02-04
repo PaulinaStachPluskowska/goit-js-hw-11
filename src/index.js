@@ -37,7 +37,7 @@ async function getImages(searchedPhrase, pageNumber) {
             orientation: 'horizontal',
             safesearch: true,
             page: pageNumber,
-            per_page: perPage,
+            per_page: 40,
         });
         
         const response = await axios
@@ -59,7 +59,7 @@ async function getImages(searchedPhrase, pageNumber) {
           Notify.info(
             "We're sorry, but you've reached the end of search results."
           );
-          console.log(response.data.totalHits);
+          // console.log(response.data.totalHits);
         }
 
         
