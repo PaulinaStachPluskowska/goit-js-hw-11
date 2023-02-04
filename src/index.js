@@ -13,7 +13,7 @@ const gallery = document.querySelector('.gallery');
 
 let pageNumber = 1;
 let numberOfPages = 1;
-// const perPage = 40;
+const perPage = 40;
 
 searchButton.addEventListener('submit', async event => {
     event.preventDefault();
@@ -56,17 +56,13 @@ async function getImages(searchedPhrase, pageNumber) {
         scrollPage.scrollPage();
 
         if (response.data.totalHits === gallery.childElementCount) {
-          Notify.info(
-            "We're sorry, but you've reached the end of search results."
-          );
+          Notify.warning("We're sorry, but you've reached the end of search results.");
           // console.log(response.data.totalHits);
         }
 
         
     } catch (error) {
-        Notify.failure(
-            'Sorry, there are no images matching your search query. Please try again.'
-        );
+        Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     }
 };
 
