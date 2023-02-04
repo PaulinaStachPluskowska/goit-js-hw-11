@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 const axios = require('axios').default;
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
